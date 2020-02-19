@@ -11,7 +11,7 @@ class UniprotRequest:
         self.suffix = ".fasta"
         self.results_dict = {}
         #self.get_list_of_sequences([uniprot_id_list[0]])
-        self.get_list_of_sequences(uniprot_id_list)
+        self.get_protein_data(uniprot_id_list)
         #print(self.results_dict)
         # self.fasta_to_seq(fasta_list[0])
 
@@ -47,7 +47,7 @@ class UniprotRequest:
         #print("---------")
         return sequence
 
-    def get_list_of_sequences(self, uniprot_id_list):
+    def get_protein_data(self, uniprot_id_list):
 
         for item in uniprot_id_list:
             data_entry = {}
@@ -68,6 +68,9 @@ class UniprotRequest:
             retry_times += 1
             if retry_times == self.retry:
                 response.raise_for_status()
+
+    def get_data(self):
+        return self.results_dict
 
         # form_data = {"query": self.uniprot_id_list, "format": "list", "from": "ACC+ID", "to": "ACC"}
         # response = requests.get(self.uniprot_URL, params=form_data)
