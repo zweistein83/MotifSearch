@@ -1,7 +1,7 @@
 import requests
 import re
 
-
+#DEVELOPMENT
 class UniprotRequest:
 
     def __init__(self, uniprot_id_list, retry=10):
